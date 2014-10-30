@@ -1,0 +1,32 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[bulgarian]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
+\newcommand{\eqq}{\stackrel{?}{=}}
+\begin{document}
+\section{Доказателство на задача 9, че $\mathcal{C}$ е пълна решетка}
+\[M \subseteq C, P = \cup \{X \mid (X, Y) \in M\}, S = (LU(P), U(P)) \eqq \sup{M}.\]
+\begin{itemize}
+    \item Да проверим, че $S$ е горна граница. Нека $m \in M,$ значи $m = (X_m, Y_m),$ където $X_m \subseteq P.$ Но $LU$ е повдигаща, значи $P \subseteq LU(P),$ откъдето $X_m \subseteq LU(P)$ и значи $m \preceq S.$
+    \item Да проверим, че $S$ е точна горна граница. Нека $T = (X_T, Y_T)$ е горна граница за $M,$ т.е. за всеки елемент $m = (X_m, Y_m) \in M: m \preceq T,$ т.е. $X_m \subseteq X_T.$ Но $P = \cup \{X_m \mid m \in M\},$ значи $P \subseteq X_T.$ Тогава $U(P) \supseteq U(X_T) = Y_T,$ значи $S \preceq T.$
+\end{itemize}
+
+\section{Доказателство на задача 10, че $f(a)$ запазва $\sup$}
+\[f(a) = (L(\{a\}), U(\{a\}))\]
+Нека $B \subseteq A, \sup B = b^*.$ Искаме $f(b^*) \eqq \sup f[B].$
+От предишната задача $\sup f[B] = (LU(P), U(P)),$ където $P = \cup \{X \mid (X, Y) \in f[B]\} = \cup \{L(\{b\}) \mid b \in B\}.$ Ще докажем, че десните части на двата разреза съвпадат.
+\begin{itemize}
+    \item $(\to)$ Нека $x \in U(\{b^*\}),$ т.е. $b^* \leq x.$ Но $b^*$ е горна граница за $B,$ значи $x$ е горна граница за всяко $b \in B$ и значи е горна граница и за всяко $L(b), b\in B,$ откъдето $x \in U(P).$
+    \item $(\leftarrow)$ Нека сега $x \in U(P),$ т.е. $(\forall b \in B)(\forall l \leq b)(l \leq x).$ Оттук в частност $(\forall b\in B)(b \leq x),$ т.е. $x$ е горна граница за $B.$ Но $b^* = \sup B$ и значи $b^* \leq x \implies x \in U(\{b^*\}).$
+\end{itemize}
+
+\section{Доказателство на задача 11.3, че $A$ е гъсто в $\mathcal{C}$}
+Нека $(X_1, Y_1) \prec (X_2, Y_2)$ в $\mathcal{C}.$ Тогава $X_1 \subset X_2.$ Ако $X_2 \setminus X_1$ се състои от поне два елемента, използваме линейността и гъстотата на $A$ за да намерим елемент $c \in A$ строго между тях, за който $(X_1, Y_1) \prec f(c) = (L(\{c\}), U(\{c\})) \prec (X_2, Y_2).$
+
+Нека сега $X_2 \setminus X_1 = \{a\}.$ Първо да видим, че $a$ е горна граница за $X_1.$ Наистина, ако допуснем, че за някое $c \in X_1, a \leq c,$ то $(\forall u \in U(X_1))(a \leq c \leq u),$ значи $a \in LU(X_1) = X_1,$ което е противоречие.
+
+В случай, че $a$ не е точна горна граница за $X_1,$ избираме нова, по-малка горна граница $b \in U(X_1), b < a$ и използваме линейността и гъстотата на $A$ аналогично на предишния случай.
+
+Нека сега разгледаме случая $a = \sup X_1.$ Понеже $a$ е горна граница за $X_1, a \in U(X_1) = Y_1.$
+Но за произволен елемент $y \in Y_1$ имаме, че той е горна граница за $X_1$ и значи не слиза под точната горна граница: $a \leq y.$ Но $y \in Y_1$ беше произволен, значи $a$ е долна граница за $Y_1: a \in L(Y_1).$ Но $L(Y_1) = X_1,$ защото са компоненти на разрез, и значи $a \in X_1,$ което е противоречие.
+\end{document}
